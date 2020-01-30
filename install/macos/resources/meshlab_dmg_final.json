@@ -1,0 +1,12 @@
+{
+  "title": "MeshLab",
+  "icon": "/Users/alessandro/Repos/meshlab/install/macos/../../src/meshlab/images/meshlab.icns",
+  "background": "meshlab_dmg_background.png",
+  "window" : { "size" : { "width" : 500, "height" : 400 } },
+  "contents": [
+    { "x": 112, "y": 100, "type": "file", "path": "/Users/alessandro/builds/build_meshlab_script/distrib//meshlab.app" },
+    { "x": 385, "y": 100, "type": "link", "path": "/Applications" },
+    { "x": 250, "y": 280, "type": "file", "path": "/Users/alessandro/builds/build_meshlab_script/distrib//LICENSE.txt" },
+    { "x": 385, "y": 280, "type": "file", "path": "/Users/alessandro/builds/build_meshlab_script/distrib//readme.txt" }
+  ]
+}
