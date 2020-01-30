@@ -9,12 +9,13 @@
 # You can give as argument the BUILD_PATH, and meshlab binaries will be
 # then placed inside BUILD_PATH/distrib.
 
-cd "${0%/*}" #move to script directory
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $DIR #move to script directory
 
 #checking for parameters
 if [ "$#" -eq 0 ]
 then
-    BUILD_PATH="../../src"
+    BUILD_PATH=$PWD/../../src
 else
     BUILD_PATH=$1
 fi

@@ -9,12 +9,12 @@
 # You can give as argument the DISTRIB_PATH containing meshlab.app.
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-cd "${DIR}" #move to script directory
+cd $DIR #move to script directory
 
 #checking for parameters
 if [ "$#" -eq 0 ]
 then
-    DISTRIB_PATH="../../distrib"
+    DISTRIB_PATH=$PWD/../../distrib
 else
     DISTRIB_PATH=$1
 fi

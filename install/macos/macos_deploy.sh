@@ -9,23 +9,21 @@
 # After running this script, $DISTRIB_PATH/meshlab.app will be a portable meshlab application.
  
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-cd "${DIR}" #move to script directory
+cd $DIR #move to script directory
  
 #checking for parameters
 if [ "$#" -eq 0 ]
 then
-    DISTRIB_PATH="../../distrib"
+    DISTRIB_PATH=$PWD/../../distrib
 else
     DISTRIB_PATH=$1
 fi
 
-SOURCE_PATH="../../src"
+SOURCE_PATH=$PWD/../../src
 
 APPNAME="meshlab.app"
 
 echo "Hopefully I should find" $BUILD_PATH/distrib/$APPNAME
-
-APPFOLDER=$BUILD_PATH/distrib/$APPNAME
 
 if ! [ -e $DISTRIB_PATH/$APPNAME -a -d $DISTRIB_PATH/$APPNAME ]
 then
