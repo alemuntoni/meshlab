@@ -37,7 +37,7 @@ jobs:
         sh install/macos/macos_deploy.sh
     - name: Creating DMG
       run: |
-        sh install/macos/macos_install.sh
+        sh install/macos/macos_dmg.sh
         ls -la distrib/MeshLab${{steps.envs.outputs.date}}.dmg
         mv distrib/MeshLab${{steps.envs.outputs.date}}.dmg MeshLab${{steps.envs.outputs.date}}-macos.dmg
     - name: Uploading MeshLab Portable

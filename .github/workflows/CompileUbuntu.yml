@@ -30,7 +30,7 @@ jobs:
         sh install/linux/linux_build.sh
     - name: Creating Meshlab Portable ZIP
       run : |
-        sh install/linux/linux_install.sh
+        sh install/linux/linux_appimage.sh
         mv distrib/*.AppImage .
     - name: Uploading Meshlab Portable
       uses: actions/upload-artifact@v1

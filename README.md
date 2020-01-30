@@ -15,28 +15,7 @@ MeshLab is available for Windows, MacOSX, and Linux.
 
 # Build instructions
 
-MeshLab requires [Qt](https://www.qt.io/) >= 5.9, with `script` and `xmlpatterns` as additional packages.
-
-After setting up the Qt environment:
-
-	git clone --recursive https://github.com/cnr-isti-vclab/meshlab
-	cd meshlab/src
-	qmake
-	make
-	
-Then, a meshlab executable can be found inside the `distrib` folder.
-
-You can also use [QtCreator](https://www.qt.io/product) to build meshlab:
-
-1. Install QtCreator and Qt >= 5.9 with `script` and `xmlpatterns` as additional packages;
-2. Open `meshlab.pro` inside `src`;
-3. Select your favourite shadow build directory;
-4. Before the build, deactive the `QtQuickCompiler` option from the qmake call in the project options;
-5. Build meshlab.
-
-A compilation with `cmake` is also supported. For more details and compilation settings, see `src`.
-
-We provide a set of scripts that allows to compile and deploy meshlab for every platform. You can find these scripts in the `install` folder.
+We provide a set of scripts that build and deploy automatically MeshLab in the `meshlab/install` folder, or you can see specific build instructions in the `meshlab/src` folder.
 
 # Structure of the Repository
 

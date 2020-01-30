@@ -23,4 +23,4 @@ fi
 
 sh macos_build.sh $BUILD_PATH
 sh macos_deploy.sh $BUILD_PATH/distrib
-sh macos_install.sh $BUILD_PATH/distrib
+sh macos_dmg.sh $BUILD_PATH/distrib
