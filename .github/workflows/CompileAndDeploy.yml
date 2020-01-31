@@ -124,7 +124,8 @@ jobs:
       with:
         name: meshlab_portable_windows
         path: distrib
-         
+  
+  #after building MeshLab for the three platforms, we create a release in github       
   create_release:
     name: Creating Release
     needs: [ubuntu_build, macos_build, windows_build]
@@ -145,56 +146,7 @@ jobs:
         draft: false
         prerelease: false
     
-    - name: Downloading MacOS APP
-      uses: actions/download-artifact@v1
-      with:
-        name: meshlab_portable_macos
-    - name: Renaming MacOS APP
-      run: |
-        mv meshlab_portable_macos/meshlab.app meshlab_portable_macos/MeshLab${{steps.envs.outputs.date}}-macos.app
-    - name: Downloading MacOS DMG
-      uses: actions/download-artifact@v1
-      with:
-        name: meshlab_macos
-    - name: Uploading PreReleaseMacOSAPP
-      id: upload-prerelease-macos_app
-      uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} 
-        asset_path: meshlab_portable_macos/MeshLab${{steps.envs.outputs.date}}-macos.app
-        asset_name: MeshLab${{steps.envs.outputs.date}}-macos.app
-        asset_content_type: MeshLab for MacOS
-    - name: Uploading PreReleaseMacOSDMG
-      id: upload-prerelease-macos
-      uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} 
-        asset_path: meshlab_macos/MeshLab${{steps.envs.outputs.date}}-macos.dmg
-        asset_name: MeshLab${{steps.envs.outputs.date}}-macos.dmg
-        asset_content_type: MeshLab for MacOS
-    
-    - name: Downloading Windows ZIP
-      uses: actions/download-artifact@v1
-      with:
-        name: meshlab_portable_windows
-    - name: Creating Meshlab Portable Archive
-      run: |
-        zip -r MeshLab${{steps.envs.outputs.date}}-windows.zip meshlab_portable_windows/
-    - name: Uploading PreReleaseWindowsPortable
-      id: upload-prerelease-windows-portable
-      uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: MeshLab${{steps.envs.outputs.date}}-windows.zip
-        asset_name: MeshLab${{steps.envs.outputs.date}}-windows.zip
-        asset_content_type: MeshLab Portable for Windows 
-    
+    #Linux Release
     - name: Downloading Linux ZIP
       uses: actions/download-artifact@v1
       with:
@@ -206,8 +158,8 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: meshlab_linux_appimage
-    - name: Uploading PreReleaseLinuxPortable
-      id: upload-prerelease-linux-portable
+    - name: Uploading ReleaseLinuxPortable
+      id: upload-release-linux-portable
       uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -216,8 +168,8 @@ jobs:
         asset_path: MeshLab${{steps.envs.outputs.date}}-linux.zip
         asset_name: MeshLab${{steps.envs.outputs.date}}-linux.zip
         asset_content_type: MeshLab Portable for Linux
-    - name: Uploading PreReleaseLinuxAppImage
-      id: upload-prerelease-linux-appimage
+    - name: Uploading ReleaseLinuxAppImage
+      id: upload-release-linux-appimage
       uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -226,3 +178,56 @@ jobs:
         asset_path: meshlab_linux_appimage/MeshLab${{steps.envs.outputs.date}}-linux.AppImage
         asset_name: MeshLab${{steps.envs.outputs.date}}-linux.AppImage
         asset_content_type: MeshLab AppImage for Linux
+
+    #MacOS Release
+    - name: Downloading MacOS APP
+      uses: actions/download-artifact@v1
+      with:
+        name: meshlab_portable_macos
+    - name: Renaming MacOS APP
+      run: |
+        mv meshlab_portable_macos MeshLab${{steps.envs.outputs.date}}-macos.app
+	zip -r MeshLab${{steps.envs.outputs.date}}-macos.app.zip MeshLab${{steps.envs.outputs.date}}-macos.app
+    - name: Downloading MacOS DMG
+      uses: actions/download-artifact@v1
+      with:
+        name: meshlab_macos
+    - name: Uploading ReleaseMacOSAPP
+      id: upload-release-macos_app
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        asset_path: MeshLab${{steps.envs.outputs.date}}-macos.app.zip
+        asset_name: MeshLab${{steps.envs.outputs.date}}-macos.app.zip
+        asset_content_type: MeshLab for MacOS
+    - name: Uploading ReleaseMacOSDMG
+      id: upload-release-macos
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        asset_path: meshlab_macos/MeshLab${{steps.envs.outputs.date}}-macos.dmg
+        asset_name: MeshLab${{steps.envs.outputs.date}}-macos.dmg
+        asset_content_type: MeshLab for MacOS
+    
+    #Windows Release
+    - name: Downloading Windows ZIP
+      uses: actions/download-artifact@v1
+      with:
+        name: meshlab_portable_windows
+    - name: Creating Meshlab Portable Archive
+      run: |
+        zip -r MeshLab${{steps.envs.outputs.date}}-windows.zip meshlab_portable_windows/
+    - name: Uploading ReleaseWindowsPortable
+      id: upload-release-windows-portable
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: MeshLab${{steps.envs.outputs.date}}-windows.zip
+        asset_name: MeshLab${{steps.envs.outputs.date}}-windows.zip
+        asset_content_type: MeshLab Portable for Windows 
