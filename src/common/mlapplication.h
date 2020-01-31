@@ -6,6 +6,7 @@
 #include <QString>
 #include <wrap/gl/gl_mesh_attributes_info.h>
 #include "ml_mesh_type.h"
+#include "compile_time_version.h"
 
 class MeshLabApplication : public QApplication
 {
@@ -19,8 +20,8 @@ public:
     static const QString appArchitecturalName(const HW_ARCHITECTURE hw) {return appName() + architecturalSuffix(hw) + "_" + MeshLabScalarTest<MESHLAB_SCALAR>::floatingPointPrecision();}
     static const QString appVer() 
 	{
-		const QDate dt = QDate::currentDate();
-		return QString::number(dt.year()) + "." + (dt.month() < 10 ? "0" + QString::number(dt.month()) : QString::number(dt.month()));
+
+		return QString::number(compileTimeYear()) + "." + (compileTimeMonth() < 10 ? "0" + QString::number(compileTimeMonth()) : QString::number(compileTimeMonth()));
 	}
 
 	static const QString shortName() { return appName() + " " + appVer(); }
