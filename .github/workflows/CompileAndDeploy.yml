@@ -153,7 +153,7 @@ jobs:
         name: meshlab_linux_portable
     - name: Creating Meshlab Linux Archive
       run: |
-        zip -r MeshLab${{steps.envs.outputs.date}}-linux.zip meshlab_portable_linux/
+        zip -r MeshLab${{steps.envs.outputs.date}}-linux.zip meshlab_linux_portable/
     - name: Downloading Linux AppImage
       uses: actions/download-artifact@v1
       with:
@@ -186,7 +186,7 @@ jobs:
         name: meshlab_macos_portable
     - name: Renaming MacOS APP
       run: |
-        mv meshlab_portable_macos MeshLab${{steps.envs.outputs.date}}-macos.app
+        mv meshlab_macos_portable MeshLab${{steps.envs.outputs.date}}-macos.app
         zip -r MeshLab${{steps.envs.outputs.date}}-macos.app.zip MeshLab${{steps.envs.outputs.date}}-macos.app
     - name: Downloading MacOS DMG
       uses: actions/download-artifact@v1
@@ -220,7 +220,7 @@ jobs:
         name: meshlab_windows_portable
     - name: Creating Meshlab Portable Archive
       run: |
-        zip -r MeshLab${{steps.envs.outputs.date}}-windows.zip meshlab_portable_windows/
+        zip -r MeshLab${{steps.envs.outputs.date}}-windows.zip meshlab_windows_portable/
     - name: Uploading ReleaseWindowsPortable
       id: upload-release-windows-portable
       uses: actions/upload-release-asset@v1.0.1
