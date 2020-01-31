@@ -37,12 +37,12 @@ jobs:
     - name: Uploading Meshlab Portable
       uses: actions/upload-artifact@v1
       with:
-        name: meshlab_portable_linux
+        name: meshlab_linux_appimage
         path: distrib/
     - name: Uploading Meshlab AppImage
       uses: actions/upload-artifact@v1
       with:
-        name: meshlab_linux
+        name: meshlab_linux_appimage
         path: MeshLab${{steps.envs.outputs.date}}-linux.AppImage
   
   macos_build:
@@ -84,12 +84,12 @@ jobs:
     - name: Uploading MeshLab Portable
       uses: actions/upload-artifact@v1
       with:
-        name: meshlab_portable_macos
+        name: meshlab_macos_portable
         path: distrib/meshlab.app
     - name: Uploading DMG
       uses: actions/upload-artifact@v1
       with:
-        name: meshlab_macos
+        name: meshlab_macos_dmg
         path: MeshLab${{steps.envs.outputs.date}}-macos.dmg
         
   windows_build:
@@ -122,7 +122,7 @@ jobs:
     - name: Uploading Meshlab Portable 
       uses: actions/upload-artifact@v1
       with:
-        name: meshlab_portable_windows
+        name: meshlab_windows_portable
         path: distrib
   
   #after building MeshLab for the three platforms, we create a release in github       
@@ -150,7 +150,7 @@ jobs:
     - name: Downloading Linux ZIP
       uses: actions/download-artifact@v1
       with:
-        name: meshlab_portable_linux
+        name: meshlab_linux_portable
     - name: Creating Meshlab Linux Archive
       run: |
         zip -r MeshLab${{steps.envs.outputs.date}}-linux.zip meshlab_portable_linux/
@@ -183,7 +183,7 @@ jobs:
     - name: Downloading MacOS APP
       uses: actions/download-artifact@v1
       with:
-        name: meshlab_portable_macos
+        name: meshlab_macos_portable
     - name: Renaming MacOS APP
       run: |
         mv meshlab_portable_macos MeshLab${{steps.envs.outputs.date}}-macos.app
@@ -191,7 +191,7 @@ jobs:
     - name: Downloading MacOS DMG
       uses: actions/download-artifact@v1
       with:
-        name: meshlab_macos
+        name: meshlab_macos_dmg
     - name: Uploading ReleaseMacOSAPP
       id: upload-release-macos_app
       uses: actions/upload-release-asset@v1.0.1
@@ -217,7 +217,7 @@ jobs:
     - name: Downloading Windows ZIP
       uses: actions/download-artifact@v1
       with:
-        name: meshlab_portable_windows
+        name: meshlab_windows_portable
     - name: Creating Meshlab Portable Archive
       run: |
         zip -r MeshLab${{steps.envs.outputs.date}}-windows.zip meshlab_portable_windows/

@@ -43,10 +43,11 @@ jobs:
     - name: Uploading MeshLab Portable
       uses: actions/upload-artifact@v1
       with:
-        name: meshlab_portable_macos
+        name: meshlab_macos_portable
         path: distrib/meshlab.app
     - name: Uploading DMG
       uses: actions/upload-artifact@v1
       with:
-        name: meshlab_macos
+        name: meshlab_macos_dmg
         path: MeshLab${{steps.envs.outputs.date}}-macos.dmg
+

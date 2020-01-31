@@ -33,7 +33,7 @@ jobs:
     - name: Uploading Meshlab Portable 
       uses: actions/upload-artifact@v1
       with:
-        name: meshlab_portable_windows
+        name: meshlab_windows_portable
         path: distrib
 
   windows_build_cmake:
