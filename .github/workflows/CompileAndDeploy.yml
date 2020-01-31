@@ -187,7 +187,7 @@ jobs:
     - name: Renaming MacOS APP
       run: |
         mv meshlab_portable_macos MeshLab${{steps.envs.outputs.date}}-macos.app
-	zip -r MeshLab${{steps.envs.outputs.date}}-macos.app.zip MeshLab${{steps.envs.outputs.date}}-macos.app
+        zip -r MeshLab${{steps.envs.outputs.date}}-macos.app.zip MeshLab${{steps.envs.outputs.date}}-macos.app
     - name: Downloading MacOS DMG
       uses: actions/download-artifact@v1
       with:
