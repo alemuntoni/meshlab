@@ -35,7 +35,7 @@ jobs:
     - name: Uploading Meshlab Portable
       uses: actions/upload-artifact@v1
       with:
-        name: meshlab_linux_appimage
+        name: meshlab_linux_portable
         path: distrib/
     - name: Uploading Meshlab AppImage
       uses: actions/upload-artifact@v1
