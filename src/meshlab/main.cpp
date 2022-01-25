@@ -73,9 +73,9 @@ int main(int argc, char *argv[])
 	QGLFormat::setDefaultFormat(fmt);
 
 	GLExtensionsManager::init();
-	std::unique_ptr<MainWindow> window;
+	MainWindow* window;
 	try {
-		window = std::unique_ptr<MainWindow>(new MainWindow());
+		window = new MainWindow();
 	}
 	catch (const MLException& exc) {
 		handleCriticalError(exc);
@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 	}
 	
 	// This event filter is installed to intercept the open events sent directly by the Operative System.
-	FileOpenEater *filterObj=new FileOpenEater(window.get());
+	FileOpenEater *filterObj=new FileOpenEater(window);
 	app.installEventFilter(filterObj);
 	app.processEvents();
 
@@ -118,6 +118,15 @@ int main(int argc, char *argv[])
 		}
 	}
 	//else 	if(filterObj->noEvent) window.open();
+	
+	MainWindow* window2 = new MainWindow();
+	window2->show();
+
+	QMenu* menu = new QMenu();
+	menu->addAction("window1", window, SLOT(setFocus()));
+	menu->addAction("window2", window2, SLOT(setFocus()));
+	menu->setAsDockMenu();
+	
 	return app.exec();
 }
 

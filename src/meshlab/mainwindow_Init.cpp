@@ -990,8 +990,7 @@ void MainWindow::loadMeshLabSettings()
 			setting.setValue(v.name(), QVariant(docstring));
 		}
 	}
-	assert(currentGlobalParams.size() == defaultGlobalParams.size());
-
+	//assert(currentGlobalParams.size() == defaultGlobalParams.size());
 }
 
 void MainWindow::addToMenu(QList<QAction *> actionList, QMenu *menu, const char *slot)

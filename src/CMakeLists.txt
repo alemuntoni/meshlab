@@ -192,10 +192,10 @@ if(NOT DEFINED MESHLAB_PLUGINS) # it may be already defined in parent directory
 		# Rendering and Decoration Plugins
 		meshlabplugins/render_gdp
 		meshlabplugins/render_radiance_scaling
-		meshlabplugins/decorate_base
-		meshlabplugins/decorate_background
-		meshlabplugins/decorate_raster_proj
-		meshlabplugins/decorate_shadow
+		#meshlabplugins/decorate_base
+		#meshlabplugins/decorate_background
+		#meshlabplugins/decorate_raster_proj
+		#meshlabplugins/decorate_shadow
 
 		# Edit Plugins
 		meshlabplugins/edit_sample

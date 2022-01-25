@@ -341,10 +341,14 @@ void RichParameterList::setValue(const QString& name,const Value& newval)
  */
 RichParameter& RichParameterList::addParam(const RichParameter& pd )
 {
-	assert(!hasParameter(pd.name()));
-	RichParameter* rp = pd.clone();
-	paramList.push_back(rp);
-	return *rp;
+	if(!hasParameter(pd.name())) {
+		RichParameter* rp = pd.clone();
+		paramList.push_back(rp);
+		return *rp;
+	}
+	else
+		return getParameterByName(pd.name());
+	
 }
 
 /**
