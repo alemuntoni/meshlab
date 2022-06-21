@@ -165,6 +165,10 @@ public:
 
 	bool hasBeenModified() const;
 
+	FilterHistory& filterHistory();
+	const FilterHistory& filterHistory() const;
+	void pushFilterOnHistory(const Filter& f);
+
 	//iterator member functions
 	MeshIterator meshBegin();
 	MeshIterator meshEnd();
@@ -203,7 +207,7 @@ private:
 
 	MeshDocumentStateData mdstate;
 
-	FilterHistory filterHistory;
+	FilterHistory filtHistory;
 
 	bool busy;
 

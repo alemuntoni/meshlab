@@ -1179,6 +1179,8 @@ void MainWindow::executeFilter(
 			tmp.first = action->text();
 			tmp.second = params;
 			meshDoc()->oldFilterHistory.append(tmp);
+			Filter f(iFilter, action, params);
+			meshDoc()->pushFilterOnHistory(f);
 		}
 	}
 	catch (const std::bad_alloc& bdall) {

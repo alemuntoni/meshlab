@@ -91,7 +91,7 @@ void MeshDocument::clear()
 	currentRaster = nullptr;
 	busy=false;
 	oldFilterHistory.clear();
-	filterHistory.clear();
+	filtHistory.clear();
 	fullPathFilename = "";
 	documentLabel = "";
 	meshDocStateData().clear();
@@ -463,6 +463,21 @@ bool MeshDocument::hasBeenModified() const
 	for(const MeshModel& m : meshList)
 		if(m.meshModified()) return true;
 	return false;
+}
+
+FilterHistory &MeshDocument::filterHistory()
+{
+	return filtHistory;
+}
+
+const FilterHistory &MeshDocument::filterHistory() const
+{
+	return filtHistory;
+}
+
+void MeshDocument::pushFilterOnHistory(const Filter &f)
+{
+	filtHistory.pushBack(f);
 }
 
 MeshDocument::MeshIterator MeshDocument::meshBegin()
