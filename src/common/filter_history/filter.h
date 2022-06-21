@@ -25,7 +25,9 @@
 #define FILTER_H
 
 #include <common/parameters/rich_parameter_list.h>
-#include <common/plugins/plugin_manager.h>
+
+class FilterPlugin;
+class QAction;
 
 class Filter
 {

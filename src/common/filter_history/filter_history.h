@@ -30,8 +30,14 @@
 
 class FilterHistory
 {
+public:
 	using iterator = std::list<Filter>::iterator;
 	using const_iterator = std::list<Filter>::const_iterator;
+
+	unsigned int size() const;
+
+	void clear();
+	void pushBack(const Filter& f);
 
 	iterator begin();
 	iterator end();

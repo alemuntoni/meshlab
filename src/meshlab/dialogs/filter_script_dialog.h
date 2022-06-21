@@ -39,29 +39,29 @@ public:
 
 private slots:
 	void on_saveScriptButton_clicked();
-	
+
 	void on_openScriptButton_clicked();
-	
+
 	void on_clearScriptButton_clicked();
-	
-	void on_okButton_clicked();
-	
+
 	//moves the filter selected in scriptListWidget up in the script
 	void on_moveUpButton_clicked();
-	
+
 	//moves the filter selected in scriptListWidget down in the script
 	void on_moveDownButton_clicked();
-	
+
 	//removes the selected filter from the script
 	void on_removeFilterButton_clicked();
-	
+
 	//edit the parameters of the selected filter
 	void on_editParameterButton_clicked();
-	
+
+	void on_applyScriptButton_clicked();
+
 private:
 	void editOldParameters(const int row);
 	void updateGui();
-	
+
 	Ui::FilterScriptDialog* ui;
 	FilterScript& script;
 };

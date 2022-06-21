@@ -87,13 +87,8 @@ void FilterScriptDialog::on_clearScriptButton_clicked()
 	ui->scriptListWidget->clear();
 }
 
-void FilterScriptDialog::on_okButton_clicked()
+void FilterScriptDialog::on_applyScriptButton_clicked()
 {
-	MainWindow *mainWindow = qobject_cast<MainWindow*>(parentWidget());
-	
-	if(NULL == mainWindow){
-		qDebug() << "problem casting parent of filterscriptdialog to main window";
-	}
 	accept();
 }
 
@@ -238,3 +233,4 @@ void FilterScriptDialog::updateGui()
 	for (const FilterNameParameterValuesPair& pair : script)
 		ui->scriptListWidget->addItem(pair.filterName());
 }
+

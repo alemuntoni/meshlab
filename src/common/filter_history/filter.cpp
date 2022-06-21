@@ -23,6 +23,8 @@
 
 #include "filter.h"
 
+#include <common/plugins/plugin_manager.h>
+
 Filter::Filter()
 {
 }

@@ -90,6 +90,7 @@ void MeshDocument::clear()
 	currentMesh = nullptr;
 	currentRaster = nullptr;
 	busy=false;
+	oldFilterHistory.clear();
 	filterHistory.clear();
 	fullPathFilename = "";
 	documentLabel = "";

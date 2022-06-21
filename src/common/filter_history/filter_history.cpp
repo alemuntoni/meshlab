@@ -33,6 +33,21 @@ FilterHistory::iterator FilterHistory::end()
 	return history.end();
 }
 
+unsigned int FilterHistory::size() const
+{
+	return history.size();
+}
+
+void FilterHistory::clear()
+{
+	history.clear();
+}
+
+void FilterHistory::pushBack(const Filter &f)
+{
+	history.push_back(f);
+}
+
 FilterHistory::const_iterator FilterHistory::begin() const
 {
 	return history.begin();

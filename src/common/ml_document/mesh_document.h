@@ -29,6 +29,8 @@
 
 #include "helpers/mesh_document_state_data.h"
 
+#include <common/filter_history/filter_history.h>
+
 class MeshDocument : public QObject
 {
 	Q_OBJECT
@@ -179,10 +181,9 @@ public:
 	ConstRasterRangeIterator rasterIterator() const;
 
 	GLLogStream Log;
-	FilterScript filterHistory;
+	FilterScript oldFilterHistory; // todo: remove this
 
 private:
-	/// The very important member:
 	/// The list of MeshModels.
 	std::list<MeshModel> meshList;
 	/// The list of the raster models of the project
@@ -201,6 +202,8 @@ private:
 	QString documentLabel;
 
 	MeshDocumentStateData mdstate;
+
+	FilterHistory filterHistory;
 
 	bool busy;
 
