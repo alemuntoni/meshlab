@@ -26,7 +26,7 @@ case $i in
         INSTALL_PATH="${i#*=}"/usr/
         shift # past argument=value
         ;;
-    -d|--double_precision)
+    -d|--double)
         DOUBLE_PRECISION_OPTION="-DMESHLAB_BUILD_WITH_DOUBLE_SCALAR=ON"
         shift # past argument=value
         ;;

@@ -5,6 +5,12 @@ on:
 
 jobs:
   meshlab_build:
+    name: Build MeshLab
     uses: alemuntoni/cpp-build-deploy/.github/workflows/build.yml@main
+    strategy:
+      fail-fast: false
+      matrix:
+        precision: ['', 'double']
     with:
       name: MeshLab
+      build-option: ${{ matrix.precision }}

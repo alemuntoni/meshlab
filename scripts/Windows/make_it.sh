@@ -42,8 +42,8 @@ case $i in
         PACKAGES_PATH="${i#*=}"
         shift # past argument=value
         ;;
-    --double_precision)
-        DOUBLE_PRECISION_OPTION="--double_precision"
+    -d|--double_precision)
+        DOUBLE_PRECISION_OPTION="--double"
         shift # past argument=value
         ;;
     -n|--nightly)
