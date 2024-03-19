@@ -22,12 +22,6 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
-    - name: Get vclab composite actions
-      uses: actions/checkout@v4
-      with:
-        repository: alemuntoni/vclab-actions
-        # ref: v1.0.0
-        path: .github
     - name: Setup Environment
       uses: ./.github/actions/0_setup
       with:
