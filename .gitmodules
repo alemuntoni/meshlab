@@ -2,3 +2,6 @@
 	path = src/vcglib
 	url = https://github.com/cnr-isti-vclab/vcglib
 	branch = devel
+[submodule ".github/actions"]
+	path = .github/actions
+	url = https://github.com/alemuntoni/vclab-actions
