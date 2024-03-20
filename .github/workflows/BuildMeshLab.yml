@@ -25,21 +25,23 @@ jobs:
       run: |
         ARCH=$(uname -m)
 
-        echo "build_options=--nightly --ccache" >> $GITHUB_OUTPUT
+        build_options="--nightly --ccache"
         
         if [ "${{matrix.os}}" == "macos-14" ]; then
           echo "setup_env_options=" >> $GITHUB_OUTPUT
-          echo "build_options=$build_options --use_brew_qt" >> $GITHUB_OUTPUT
+          build_options="$build_options --use_brew_qt"
         else
           echo "setup_env_options=--dont_install_qt" >> $GITHUB_OUTPUT
         fi
 
         if [ "${{matrix.precision}}" == "double_precision" ]; then
           echo "artifact_suffix=_double_$ARCH" >> $GITHUB_OUTPUT
-          echo "build_options=$build_options --double_precision" >> $GITHUB_OUTPUT
+          build_options="$build_options --double_precision"
         else
           echo "artifact_suffix=_$ARCH" >> $GITHUB_OUTPUT
         fi
+
+        echo "build_options=$build_options" >> $GITHUB_OUTPUT
     - name: Setup Environment
       uses: ./.github/actions/0_setup
       with:
