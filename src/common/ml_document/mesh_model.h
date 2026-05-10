@@ -23,7 +23,6 @@
 
 #ifndef MESH_MODEL_H
 #define MESH_MODEL_H
-#include <GL/glew.h>
 
 #include <stdio.h>
 #include <time.h>
@@ -46,6 +45,8 @@
 #include <wrap/callback.h>
 #include <wrap/io_trimesh/io_mask.h>
 #include <wrap/io_trimesh/additionalinfo.h>
+
+#include <GL/glew.h>
 
 #include <QList>
 #include <QString>
